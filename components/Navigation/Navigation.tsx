@@ -2,20 +2,21 @@
 import { NAVLINKS } from '@/constants'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import Transition from '../Transition/Transition'
 
-const Navigation = () => {
+export default function Navigation() {
     const [isRouting, setIsRouting] = useState(false)
     const path = usePathname()
     const [prevPath, setPrevPath] = useState('/')
-
-
+    
+    
     useEffect(() => {
         if (prevPath !== path) {
             setIsRouting(true)
         }
     }, [path, prevPath])
-
+    
     useEffect(() => {
         if (isRouting) {
             setPrevPath(path)
@@ -24,13 +25,14 @@ const Navigation = () => {
             }, 1200)
             return () => clearTimeout(timeout)
         }
-    }, [isRouting])
-
+    }, [isRouting, path])
+    
     return (
         <div
-            className='absolute z-[50] -bottom-20 w-[50%] md:w-[20%] max-h-[150px] rounded-full flex justify-between items-center border border-white py-7'
+            className='absolute z-[50] -bottom-20 w-[50%] md:w-[20%] max-h-[150px] rounded-full flex justify-between items-center border bg-black px-4 border-white py-7'
             style={{ left: '20%' }}
         >
+            {isRouting && <Transition/>}
             {NAVLINKS.map(navLink => (
                 <Link
                     key={navLink.name}
@@ -43,5 +45,3 @@ const Navigation = () => {
         </div>
     )
 }
-
-export default Navigation
