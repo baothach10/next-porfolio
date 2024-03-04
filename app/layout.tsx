@@ -18,10 +18,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head
+      >
+        <link rel="shortcut icon" href="/horseLogo.jpg" />
+
+      </head>
       <body className={inter.className}>
-        <Navbar/>
+        <Navbar />
         {children}
-        <Navigation/>
+        <Navigation />
       </body>
     </html>
   );
