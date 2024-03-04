@@ -14,7 +14,11 @@ export default function Navbar() {
                         className='w-full h-full object-contain rounded-full'
                     />
                 </div>
-                <h1 className='text-white text-[25px] font-semibold'>Ngo Tran Bao Thach</h1>
+                <h1 className='text-white text-[25px] font-semibold'>Ngo Tran Bao Thach <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-red-500">
+                    {" "}
+                    Website
+                    {" "}
+                </span></h1>
             </div>
             <div className='flex flex-row gap-5 mb-2'>
                 {SOCIALS.map((social) => (
